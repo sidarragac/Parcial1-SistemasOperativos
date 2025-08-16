@@ -4,6 +4,7 @@
 #include "ClasePersona.h"
 #include "StructPersona.h"
 #include <vector>
+#include <string>
 
 // Funciones para generación de datos aleatorios
 
@@ -13,14 +14,13 @@ std::string generarID();
 
 double randomDouble(double min, double max);
 
-const ClasePersona* buscarPorID(const std::vector<Persona>& personas, const std::string& id);
+const ClasePersona* buscarPorID(const std::vector<ClasePersona>& personas, const std::string& id);
 
 // Funciones para generar colecciones de datos
+std::string generarDatos();
+void generarColeccion(int n);
 
-void generarColeccionJSON(int n);
-void guardarEnJSON()
-
-std::vector<ClasePersona> generarColeccionClase();
-std::vector<StructPersona> generarColeccionStruct();
+std::vector<ClasePersona> cargarColeccionClase();
+std::vector<StructPersona> cargarColeccionStruct();
 
 #endif // GENERADOR_H

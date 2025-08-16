@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <string>
 #include <fstream>
+#include <iostream>
 
 // Bases de datos para generación realista
 
@@ -80,7 +81,7 @@ double randomDouble(double min, double max) {
  * CÓMO: Seleccionando aleatoriamente de las bases de datos y generando números.
  * PARA QUÉ: Generar datos de prueba.
  */
-Persona generarPersona() {
+ClasePersona generarPersona() {
     // Decide si es hombre o mujer
     bool esHombre = rand() % 2;
     
@@ -105,25 +106,7 @@ Persona generarPersona() {
     double deudas = randomDouble(0, patrimonio * 0.7);     // Deudas hasta el 70% del patrimonio
     bool declarante = (ingresos > 50000000) && (rand() % 100 > 30); // Probabilidad 70% si ingresos > 50M
     
-    return Persona(nombre, apellido, id, ciudad, fecha, ingresos, patrimonio, deudas, declarante);
-}
-
-/**
- * Implementación de generarColeccion.
- * 
- * POR QUÉ: Generar un conjunto de n personas.
- * CÓMO: Reservando espacio y agregando n personas generadas.
- * PARA QUÉ: Crear datasets para pruebas.
- */
-std::vector<Persona> generarColeccion(int n) {
-    std::vector<Persona> personas;
-    personas.reserve(n); // Reserva espacio para n personas (eficiencia)
-    
-    for (int i = 0; i < n; ++i) {
-        personas.push_back(generarPersona());
-    }
-    
-    return personas;
+    return ClasePersona(nombre, apellido, id, ciudad, fecha, ingresos, patrimonio, deudas, declarante);
 }
 
 /**
@@ -145,10 +128,12 @@ const ClasePersona* buscarPorID(const std::vector<ClasePersona>& personas, const
     }
 }
 
-void generarColeccionJSON(int n) {
+std::string generarDatos(){
+    std::string csv;
     // Decide si es hombre o mujer
     bool esHombre = rand() % 2;
-    
+    csv += std::to_string(esHombre) + ",";
+
     // Selecciona nombre según género
     std::string nombre = esHombre ? 
         nombresMasculinos[rand() % nombresMasculinos.size()] :
@@ -158,37 +143,55 @@ void generarColeccionJSON(int n) {
     std::string apellido = apellidos[rand() % apellidos.size()];
     apellido += " ";
     apellido += apellidos[rand() % apellidos.size()];
-    
+
+    csv += nombre + "," + apellido + ",";
+
     // Genera los demás atributos
     std::string id = generarID();
     std::string ciudad = ciudadesColombia[rand() % ciudadesColombia.size()];
     std::string fecha = generarFechaNacimiento();
     
+    csv += id + "," + ciudad + "," + fecha + ",";
+
     // Genera datos financieros realistas
     double ingresos = randomDouble(10000000, 500000000);   // 10M a 500M COP
     double patrimonio = randomDouble(0, 2000000000);       // 0 a 2,000M COP
     double deudas = randomDouble(0, patrimonio * 0.7);     // Deudas hasta el 70% del patrimonio
     bool declarante = (ingresos > 50000000) && (rand() % 100 > 30); // Probabilidad 70% si ingresos > 50M
+    
+    csv += std::to_string(ingresos) + "," + 
+           std::to_string(patrimonio) + "," + 
+           std::to_string(deudas) + "," + 
+           (declarante ? "1" : "0") + "\n"; // 1 si declarante, 0 si no
 
-    const data = {
-        {"nombre", nombre},
-        {"apellido", apellido},
-        {"id", id},
-        {"ciudad", ciudad},
-        {"fechaNacimiento", fecha},
-        {"ingresos", ingresos},
-        {"patrimonio", patrimonio},
-        {"deudas", deudas},
-        {"declarante", declarante}
-    };
-
-    guardarEnJSON(data);
+    return csv;
 }
 
-void guardarEnJSON()
+/**
+ * Implementación de generarColeccion.
+ * 
+ * POR QUÉ: Generar un conjunto de n personas.
+ * CÓMO: Reservando espacio y agregando n personas generadas.
+ * PARA QUÉ: Crear datasets para pruebas.
+ */
+void generarColeccion(int n) {
+    // Abrir archivo .csv
+    std::ofstream archivo("personas.csv");
+    if(!archivo) {
+        std::cerr << "Error al abrir el archivo para escribir." << std::endl;
+        return;
+    }
+    
+    archivo << "esHombre,nombre,apellido,id,ciudad,fechaNacimiento,ingresos,patrimonio,deudas,declarante" << std::endl;
+    for (int i = 0; i < n; i++){
+        std::string csv = generarDatos();
+        archivo << csv;
+    }
 
-std::vector<ClasePersona> generarColeccionClase() {
+    archivo.close();
 }
-std::vector<StructPersona> generarColeccionStruct() {
 
+std::vector<ClasePersona> cargarColeccionClase() {
+}
+std::vector<StructPersona> cargarColeccionStruct() {
 }
