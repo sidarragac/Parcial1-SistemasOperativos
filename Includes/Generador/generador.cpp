@@ -80,7 +80,9 @@ double randomDouble(double min, double max) {
  * CÓMO: Seleccionando aleatoriamente de las bases de datos y generando números.
  * PARA QUÉ: Generar datos de prueba.
  */
-Persona generarPersona() {
+
+ /*
+ClasePersona generarPersona() {
     // Decide si es hombre o mujer
     bool esHombre = rand() % 2;
     
@@ -93,6 +95,7 @@ Persona generarPersona() {
     std::string apellido = apellidos[rand() % apellidos.size()];
     apellido += " ";
     apellido += apellidos[rand() % apellidos.size()];
+
     
     // Genera los demás atributos
     std::string id = generarID();
@@ -105,7 +108,43 @@ Persona generarPersona() {
     double deudas = randomDouble(0, patrimonio * 0.7);     // Deudas hasta el 70% del patrimonio
     bool declarante = (ingresos > 50000000) && (rand() % 100 > 30); // Probabilidad 70% si ingresos > 50M
     
-    return Persona(nombre, apellido, id, ciudad, fecha, ingresos, patrimonio, deudas, declarante);
+    return ClasePersona(nombre, apellido, id, ciudad, fecha, ingresos, patrimonio, deudas, declarante);
+}*/
+
+StructPersona generarPersona() {
+    StructPersona p; // Crea una instancia de la estructura Persona
+    
+    // Decide aleatoriamente si es hombre o mujer
+    bool esHombre = rand() % 2;
+    
+    // Selecciona nombre según género
+    p.nombre = esHombre ? 
+        nombresMasculinos[rand() % nombresMasculinos.size()] :
+        nombresFemeninos[rand() % nombresFemeninos.size()];
+    
+    // Combina dos apellidos aleatorios
+    p.apellido = apellidos[rand() % apellidos.size()] + " " + 
+                 apellidos[rand() % apellidos.size()];
+    
+    // Genera identificadores únicos
+    p.id = generarID();
+    // Ciudad aleatoria de Colombia
+    p.ciudadNacimiento = ciudadesColombia[rand() % ciudadesColombia.size()];
+    // Fecha aleatoria
+    p.fechaNacimiento = generarFechaNacimiento();
+    
+    // --- Generación de datos económicos realistas ---
+    // Ingresos entre 10 millones y 500 millones COP
+    p.ingresosAnuales = randomDouble(10000000, 500000000);
+    // Patrimonio entre 0 y 2 mil millones COP
+    p.patrimonio = randomDouble(0, 2000000000);
+    // Deudas hasta el 70% del patrimonio
+    p.deudas = randomDouble(0, p.patrimonio * 0.7);
+    // 70% probabilidad de ser declarante si gana > 50 millones
+    p.declaranteRenta = (p.ingresosAnuales > 50000000) && (rand() % 100 > 30);
+    p.calcularGrupo();
+    
+    return p; // Retorna la estructura completa
 }
 
 /**
@@ -115,8 +154,21 @@ Persona generarPersona() {
  * CÓMO: Reservando espacio y agregando n personas generadas.
  * PARA QUÉ: Crear datasets para pruebas.
  */
-std::vector<Persona> generarColeccion(int n) {
-    std::vector<Persona> personas;
+/*
+std::vector<ClasePersona> generarColeccion(int n) {
+    std::vector<ClasePersona> personas;
+    personas.reserve(n); // Reserva espacio para n personas (eficiencia)
+    
+    for (int i = 0; i < n; ++i) {
+        personas.push_back(generarPersona());
+    }
+    
+    return personas;
+}
+*/
+
+std::vector<StructPersona> generarColeccion(int n) {
+    std::vector<StructPersona> personas;
     personas.reserve(n); // Reserva espacio para n personas (eficiencia)
     
     for (int i = 0; i < n; ++i) {
@@ -143,52 +195,4 @@ const ClasePersona* buscarPorID(const std::vector<ClasePersona>& personas, const
     } else {
         return nullptr; // No encontrado
     }
-}
-
-void generarColeccionJSON(int n) {
-    // Decide si es hombre o mujer
-    bool esHombre = rand() % 2;
-    
-    // Selecciona nombre según género
-    std::string nombre = esHombre ? 
-        nombresMasculinos[rand() % nombresMasculinos.size()] :
-        nombresFemeninos[rand() % nombresFemeninos.size()];
-    
-    // Construye apellido compuesto (dos apellidos aleatorios)
-    std::string apellido = apellidos[rand() % apellidos.size()];
-    apellido += " ";
-    apellido += apellidos[rand() % apellidos.size()];
-    
-    // Genera los demás atributos
-    std::string id = generarID();
-    std::string ciudad = ciudadesColombia[rand() % ciudadesColombia.size()];
-    std::string fecha = generarFechaNacimiento();
-    
-    // Genera datos financieros realistas
-    double ingresos = randomDouble(10000000, 500000000);   // 10M a 500M COP
-    double patrimonio = randomDouble(0, 2000000000);       // 0 a 2,000M COP
-    double deudas = randomDouble(0, patrimonio * 0.7);     // Deudas hasta el 70% del patrimonio
-    bool declarante = (ingresos > 50000000) && (rand() % 100 > 30); // Probabilidad 70% si ingresos > 50M
-
-    const data = {
-        {"nombre", nombre},
-        {"apellido", apellido},
-        {"id", id},
-        {"ciudad", ciudad},
-        {"fechaNacimiento", fecha},
-        {"ingresos", ingresos},
-        {"patrimonio", patrimonio},
-        {"deudas", deudas},
-        {"declarante", declarante}
-    };
-
-    guardarEnJSON(data);
-}
-
-void guardarEnJSON()
-
-std::vector<ClasePersona> generarColeccionClase() {
-}
-std::vector<StructPersona> generarColeccionStruct() {
-
 }
