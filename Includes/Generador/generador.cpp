@@ -189,6 +189,7 @@ StructPersona agregarStructPersona(std::string datos){
     p.patrimonio = patrimonio;
     p.deudas = deudas;
     p.declaranteRenta = declarante;
+    p.calcularGrupo();
 
     return p;
 }
