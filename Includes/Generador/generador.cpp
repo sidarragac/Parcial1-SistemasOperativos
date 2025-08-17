@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <string>
 #include <fstream>
+#include <sstream>
 #include <iostream>
 
 // Bases de datos para generación realista

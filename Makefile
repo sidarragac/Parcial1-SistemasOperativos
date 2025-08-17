@@ -2,10 +2,10 @@
 
 # Configuración del compilador
 CXX := g++
-CXXFLAGS := -Wall -Wextra -std=c++11
+CXXFLAGS := -Wall -Wextra -std=c++14
 
 # Archivos fuente y objeto
-SRCS := main.cpp ./Includes/StructPersona/StructPersona.cpp ./Includes/ClasePersona/ClasePersona.cpp ./Includes/Busqueda/busqueda.cpp ./Includes/Generador/generador.cpp
+SRCS := main.cpp ./Includes/StructPersona/StructPersona.cpp ./Includes/ClasePersona/ClasePersona.cpp ./Includes/Busqueda/busqueda.cpp ./Includes/Generador/generador.cpp ./Includes/Monitor/Monitor.cpp
 OBJS := $(SRCS:.cpp=.o)
 EXEC := programa
 
