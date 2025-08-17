@@ -8,7 +8,7 @@
  * CÓMO: Usando la lista de inicialización y moviendo los strings para evitar copias.
  * PARA QUÉ: Eficiencia y correcta construcción del objeto.
  */
-Persona::Persona(std::string nom, std::string ape, std::string id, 
+ClasePersona::ClasePersona(std::string nom, std::string ape, std::string id, 
                  std::string ciudad, std::string fecha, double ingresos, 
                  double patri, double deud, bool declara)
     : nombre(std::move(nom)), 
@@ -22,18 +22,18 @@ Persona::Persona(std::string nom, std::string ape, std::string id,
       declaranteRenta(declara),
       grupo(' ')
 {
-    ultimasCifrasId = std::stoi(id.substr(id.length() - 2));
+    if (this->id.length() >= 2) {
+        ultimasCifrasId = std::stoi(this->id.substr(this->id.length() - 2));
+    }
 
     if (ultimasCifrasId < 40) {
-        grupo = 'A';
+        this->grupo = 'A';
     } else if (ultimasCifrasId < 80) {
-        grupo = 'B';
+        this->grupo = 'B';
     } else {
-        grupo = 'C';
+        this->grupo = 'C';
     }
 }
-
-
 
 /**
  * Implementación de mostrar.
@@ -42,7 +42,7 @@ Persona::Persona(std::string nom, std::string ape, std::string id,
  * CÓMO: Usando flujos de salida y formateadores.
  * PARA QUÉ: Facilitar la lectura de los datos completos de una persona.
  */
-void Persona::mostrar() const {
+void ClasePersona::mostrar() const {
     std::cout << "-------------------------------------\n";
     std::cout << "[" << id << "] Nombre: " << nombre << " " << apellido << "\n";
     std::cout << "   - Ciudad de nacimiento: " << ciudadNacimiento << "\n";
@@ -61,7 +61,7 @@ void Persona::mostrar() const {
  * CÓMO: Imprime ID, nombre completo, ciudad e ingresos.
  * PARA QUÉ: Listados rápidos y eficientes.
  */
-void Persona::mostrarResumen() const {
+void ClasePersona::mostrarResumen() const {
     std::cout << "[" << id << "] " << nombre << " " << apellido
               << " | " << ciudadNacimiento 
               << " | $" << std::fixed << std::setprecision(2) << ingresosAnuales;

@@ -4,7 +4,7 @@
 #include <iostream>
 
 // Implementación de métodos inline para mantener la estructura simple
-void Persona::mostrar() const {
+void StructPersona::mostrar() const {
     std::cout << "-------------------------------------\n";
     std::cout << "[" << id << "] Nombre: " << nombre << " " << apellido << "\n";
     std::cout << "   - Ciudad de nacimiento: " << ciudadNacimiento << "\n";
@@ -16,20 +16,24 @@ void Persona::mostrar() const {
     std::cout << "   - Declarante de renta: " << (declaranteRenta ? "Sí" : "No") << "\n";
 }
 
-void Persona::mostrarResumen() const {
+void StructPersona::mostrarResumen() const {
     std::cout << "[" << id << "] " << nombre << " " << apellido
               << " | " << ciudadNacimiento 
               << " | $" << std::fixed << std::setprecision(2) << ingresosAnuales;
 }
 
-void Persona::calcularGrupo() const{
-    ultimasCifrasId = std::stoi(id.substr(id.length() - 2));
+void StructPersona::calcularGrupo() {
+    int ultimasCifrasId;
+
+    if (this->id.length() >= 2) {
+        ultimasCifrasId = std::stoi(this->id.substr(this->id.length() - 2));
+    }
 
     if (ultimasCifrasId < 40) {
-        grupo = 'A';
+        this->grupo = 'A';
     } else if (ultimasCifrasId < 80) {
-        grupo = 'B';
+        this->grupo = 'B';
     } else {
-        grupo = 'C';
+        this->grupo = 'C';
     }
 }

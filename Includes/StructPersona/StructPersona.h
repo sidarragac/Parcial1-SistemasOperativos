@@ -24,7 +24,7 @@ struct StructPersona {
     // --- Métodos de visualización ---
     void mostrar() const;         // Muestra todos los detalles completos
     void mostrarResumen() const;  // Muestra versión compacta para listados
-    char calcularGrupo() const;
+    void calcularGrupo();
 };
 
 #endif // PERSONA_H

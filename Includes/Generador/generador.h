@@ -1,10 +1,12 @@
 #ifndef GENERADOR_H
 #define GENERADOR_H
 
-#include "ClasePersona.h"
-#include "StructPersona.h"
+#include "../ClasePersona/ClasePersona.h"
+#include "../StructPersona/StructPersona.h"
 #include <vector>
 #include <string>
+
+extern const std::vector<std::string> ciudadesColombia;
 
 // Funciones para generación de datos aleatorios
 

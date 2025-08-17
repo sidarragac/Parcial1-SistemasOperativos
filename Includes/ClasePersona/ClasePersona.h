@@ -49,6 +49,7 @@ public:
     double getDeudas() const { return deudas; }
     bool getDeclaranteRenta() const { return declaranteRenta; }
     char getGrupo() const { return grupo; }
+    void setCiudad(const std::string& ciudad) { ciudadNacimiento = ciudad; }
 
     /**
      * Muestra toda la información de la persona de forma detallada.

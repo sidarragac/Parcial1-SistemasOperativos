@@ -1,4 +1,4 @@
-#include "monitor.h"
+#include "Monitor.h"
 #include <unistd.h> // sysconf
 #include <cstdio>   // FILE, fscanf
 
