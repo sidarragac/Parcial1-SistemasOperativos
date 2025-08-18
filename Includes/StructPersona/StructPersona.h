@@ -20,6 +20,7 @@ struct StructPersona {
     double deudas;                // Deudas pendientes
     bool declaranteRenta;         // Si está obligado a declarar renta
     char grupo;
+    double edad;
 
     // --- Métodos de visualización ---
     void mostrar() const;         // Muestra todos los detalles completos

@@ -52,6 +52,36 @@ std::string generarFechaNacimiento() {
     return std::to_string(dia) + "/" + std::to_string(mes) + "/" + std::to_string(anio);
 }
 
+double calcularEdad(const std::string& fechaNacimiento) {
+    int dia, mes, anio;
+    char sep;
+    std::istringstream ss(fechaNacimiento);
+    ss >> dia >> sep >> mes >> sep >> anio;
+
+    std::time_t t = std::time(nullptr);
+    std::tm* fechaActual = std::localtime(&t);
+
+    int anioActual = fechaActual->tm_year + 1900;
+    int mesActual  = fechaActual->tm_mon + 1;
+    int diaActual  = fechaActual->tm_mday;
+
+    int edad_anios = anioActual - anio;
+    int edad_meses = mesActual - mes;
+    int edad_dias  = diaActual - dia;
+
+    if (edad_dias < 0) {
+        edad_meses -= 1;
+        edad_dias += 30;  // aproximación
+    }
+    if (edad_meses < 0) {
+        edad_anios -= 1;
+        edad_meses += 12;
+    }
+
+    double edad = edad_anios + (edad_meses / 12.0) + (edad_dias / 365.0);
+    return edad;
+}
+
 /**
  * Implementación de generarID.
  * 
@@ -98,8 +128,9 @@ std::string generarDatos(){
     std::string id = generarID();
     std::string ciudad = ciudadesColombia[rand() % ciudadesColombia.size()];
     std::string fecha = generarFechaNacimiento();
+    std::string edad = std::to_string(calcularEdad(fecha));
     
-    csv += id + "," + ciudad + "," + fecha + ",";
+    csv += id + "," + ciudad + "," + fecha + "," + edad + ",";
 
     // Genera datos financieros realistas
     double ingresos = randomDouble(10000000, 500000000);   // 10M a 500M COP
@@ -130,7 +161,7 @@ void generarColeccion(int n) {
         return;
     }
     
-    archivo << "nombre,apellido,id,ciudad,fechaNacimiento,ingresos,patrimonio,deudas,declarante" << std::endl;
+    archivo << "nombre,apellido,id,ciudad,fechaNacimiento,edad,ingresos,patrimonio,deudas,declarante" << std::endl;
     for (int i = 0; i < n; i++){
         std::string csv = generarDatos();
         archivo << csv;
@@ -141,40 +172,44 @@ void generarColeccion(int n) {
 
 ClasePersona agregarClasePersona(std::string datos){
     std::stringstream ss(datos);
-    std::string nombre, apellido, id, ciudad, fechaNacimiento, ingresosStr, patrimonioStr, deudasStr, declaranteStr;
+    std::string nombre, apellido, id, ciudad, fechaNacimiento, edadStr, ingresosStr, patrimonioStr, deudasStr, declaranteStr;
 
     std::getline(ss, nombre, ',');
     std::getline(ss, apellido, ',');
     std::getline(ss, id, ',');
     std::getline(ss, ciudad, ',');
     std::getline(ss, fechaNacimiento, ',');
+    std::getline(ss, edadStr, ',');
     std::getline(ss, ingresosStr, ',');
     std::getline(ss, patrimonioStr, ',');
     std::getline(ss, deudasStr, ',');
     std::getline(ss, declaranteStr, ',');
 
+    double edad = std::stod(edadStr);
     double ingresos = std::stod(ingresosStr);
     double patrimonio = std::stod(patrimonioStr);
     double deudas = std::stod(deudasStr);
     bool declarante = (declaranteStr == "1");
 
-    return ClasePersona(nombre, apellido, id, ciudad, fechaNacimiento, ingresos, patrimonio, deudas, declarante);
+    return ClasePersona(nombre, apellido, id, ciudad, fechaNacimiento, edad, ingresos, patrimonio, deudas, declarante);
 };
 
 StructPersona agregarStructPersona(std::string datos){
     std::stringstream ss(datos);
-    std::string nombre, apellido, id, ciudad, fechaNacimiento, ingresosStr, patrimonioStr, deudasStr, declaranteStr;
+    std::string nombre, apellido, id, ciudad, fechaNacimiento, edadStr, ingresosStr, patrimonioStr, deudasStr, declaranteStr;
 
     std::getline(ss, nombre, ',');
     std::getline(ss, apellido, ',');
     std::getline(ss, id, ',');
     std::getline(ss, ciudad, ',');
     std::getline(ss, fechaNacimiento, ',');
+    std::getline(ss, edadStr, ',');
     std::getline(ss, ingresosStr, ',');
     std::getline(ss, patrimonioStr, ',');
     std::getline(ss, deudasStr, ',');
     std::getline(ss, declaranteStr, ',');
 
+    double edad = std::stod(edadStr);
     double ingresos = std::stod(ingresosStr);
     double patrimonio = std::stod(patrimonioStr);
     double deudas = std::stod(deudasStr);
@@ -186,6 +221,7 @@ StructPersona agregarStructPersona(std::string datos){
     p.id = id;
     p.ciudadNacimiento = ciudad;
     p.fechaNacimiento = fechaNacimiento;
+    p.edad = edad;
     p.ingresosAnuales = ingresos;
     p.patrimonio = patrimonio;
     p.deudas = deudas;

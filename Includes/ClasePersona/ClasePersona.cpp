@@ -9,13 +9,14 @@
  * PARA QUÉ: Eficiencia y correcta construcción del objeto.
  */
 ClasePersona::ClasePersona(std::string nom, std::string ape, std::string id, 
-                 std::string ciudad, std::string fecha, double ingresos, 
+                 std::string ciudad, std::string fecha, double edad, double ingresos, 
                  double patri, double deud, bool declara)
     : nombre(std::move(nom)), 
       apellido(std::move(ape)), 
       id(std::move(id)), 
       ciudadNacimiento(std::move(ciudad)),
       fechaNacimiento(std::move(fecha)), 
+      edad(edad),
       ingresosAnuales(ingresos), 
       patrimonio(patri),
       deudas(deud), 

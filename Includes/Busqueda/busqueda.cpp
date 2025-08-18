@@ -6,41 +6,11 @@
 #include <ctime>
 #include <sstream>
 
-double calcularEdad(const std::string& fechaNacimiento) {
-    int dia, mes, anio;
-    char sep;
-    std::istringstream ss(fechaNacimiento);
-    ss >> dia >> sep >> mes >> sep >> anio;
-
-    std::time_t t = std::time(nullptr);
-    std::tm* fechaActual = std::localtime(&t);
-
-    int anioActual = fechaActual->tm_year + 1900;
-    int mesActual  = fechaActual->tm_mon + 1;
-    int diaActual  = fechaActual->tm_mday;
-
-    int edad_anios = anioActual - anio;
-    int edad_meses = mesActual - mes;
-    int edad_dias  = diaActual - dia;
-
-    if (edad_dias < 0) {
-        edad_meses -= 1;
-        edad_dias += 30;  // aproximación
-    }
-    if (edad_meses < 0) {
-        edad_anios -= 1;
-        edad_meses += 12;
-    }
-
-    double edad = edad_anios + (edad_meses / 12.0) + (edad_dias / 365.0);
-    return edad;
-}
-
 std::unordered_map<std::string, ClasePersona> buscarClasePersonaLongevaPorValor(std::vector<ClasePersona> personas) {
 	// Se crea un map para guardar la persona mayor en todo el pais y por ciudad
 	std::unordered_map<std::string, ClasePersona> mayores;
 
-	ClasePersona personaInicial("nombre","apellido","000", "ciudad", "15/08/2025", 0, 0, 0, false);
+	ClasePersona personaInicial("nombre","apellido","000", "ciudad", "15/08/2025", 0, 0, 0, 0, false);
 
 	mayores.emplace("Pais", personaInicial);
 
@@ -52,7 +22,7 @@ std::unordered_map<std::string, ClasePersona> buscarClasePersonaLongevaPorValor(
 	for (const ClasePersona& p : personas) {
 		auto itPais = mayores.find("Pais");
 		if (itPais != mayores.end()) {
-			if (calcularEdad(p.getFechaNacimiento()) > calcularEdad(itPais->second.getFechaNacimiento())) {
+			if (p.getEdad() > itPais->second.getEdad()) {
 				itPais->second = p;
 			}
 		} else {
@@ -62,7 +32,7 @@ std::unordered_map<std::string, ClasePersona> buscarClasePersonaLongevaPorValor(
 		const std::string& ciudad = p.getCiudadNacimiento();
 		auto itCiudad = mayores.find(ciudad);
 		if (itCiudad != mayores.end()) {
-			if (calcularEdad(p.getFechaNacimiento()) > calcularEdad(itCiudad->second.getFechaNacimiento())) {
+			if (p.getEdad() > itCiudad->second.getEdad()) {
 				itCiudad->second = p;
 			}
 		} else {
@@ -93,7 +63,7 @@ std::unordered_map<std::string, const ClasePersona*> buscarClasePersonaLongevaPo
 		// Encontrar el mas longevo por Pais
 		auto itPais = mayores.find("Pais");
 		if (itPais != mayores.end()) {
-			if (calcularEdad(p.getFechaNacimiento()) > calcularEdad(itPais->second->getFechaNacimiento())) {
+			if (p.getEdad() > itPais->second->getEdad()) {
 				itPais->second = &p;
 			}
 		} else {
@@ -104,7 +74,7 @@ std::unordered_map<std::string, const ClasePersona*> buscarClasePersonaLongevaPo
 		const std::string& ciudad = p.getCiudadNacimiento();
 		auto itCiudad = mayores.find(ciudad);
 		if (itCiudad != mayores.end()) {
-			if (calcularEdad(p.getFechaNacimiento()) > calcularEdad(itCiudad->second->getFechaNacimiento())) {
+			if (p.getEdad() > itCiudad->second->getEdad()) {
 				itCiudad->second = &p;
 			}
 		} else {
@@ -138,7 +108,7 @@ std::unordered_map<std::string, StructPersona> buscarStructPersonaLongevaPorValo
 	for (const StructPersona& p : personas) {
 		auto itPais = mayores.find("Pais");
 		if (itPais != mayores.end()) {
-			if (calcularEdad(p.fechaNacimiento) > calcularEdad(itPais->second.fechaNacimiento)) {
+			if (p.edad > itPais->second.edad) {
 				itPais->second = p;
 			}
 		} else {
@@ -148,7 +118,7 @@ std::unordered_map<std::string, StructPersona> buscarStructPersonaLongevaPorValo
 		const std::string& ciudad = p.ciudadNacimiento;
 		auto itCiudad = mayores.find(ciudad);
 		if (itCiudad != mayores.end()) {
-			if (calcularEdad(p.fechaNacimiento) > calcularEdad(itCiudad->second.fechaNacimiento)) {
+			if (p.edad > itCiudad->second.edad) {
 				itCiudad->second = p;
 			}
 		} else {
@@ -179,7 +149,7 @@ std::unordered_map<std::string, const StructPersona*> buscarStructPersonaLongeva
 		// Encontrar el mas longevo por Pais
 		auto itPais = mayores.find("Pais");
 		if (itPais != mayores.end()) {
-			if (calcularEdad(p.fechaNacimiento) > calcularEdad(itPais->second->fechaNacimiento)) {
+			if (p.edad > itPais->second->edad) {
 				itPais->second = &p;
 			}
 		} else {
@@ -190,7 +160,7 @@ std::unordered_map<std::string, const StructPersona*> buscarStructPersonaLongeva
 		const std::string& ciudad = p.ciudadNacimiento;
 		auto itCiudad = mayores.find(ciudad);
 		if (itCiudad != mayores.end()) {
-			if (calcularEdad(p.fechaNacimiento) > calcularEdad(itCiudad->second->fechaNacimiento)) {
+			if (p.edad > itCiudad->second->edad) {
 				itCiudad->second = &p;
 			}
 		} else {
@@ -211,7 +181,7 @@ std::unordered_map<std::string, ClasePersona> buscarClasePersonaPatrimonioPorVal
 	// Se crea un map para guardar la persona mayor en todo el pais y por ciudad
 	std::unordered_map<std::string, ClasePersona> masRicos;
 
-	ClasePersona personaInicial("nombre","apellido","000", "ciudad", "15/08/2025", 0, 0, 0, false);
+	ClasePersona personaInicial("nombre","apellido","000", "ciudad", "15/08/2025", 0, 0, 0, 0, false);
 
 	masRicos.emplace("Pais", personaInicial);
 
@@ -693,7 +663,7 @@ std::unordered_map<std::string, ClasePersona> buscarClasePersonaEndeudadaPorValo
 	// Se crea un map para guardar la persona mayor en todo el pais y por ciudad
 	std::unordered_map<std::string, ClasePersona> mayorEndeudado;
 
-	ClasePersona personaInicial("nombre","apellido","000", "ciudad", "15/08/2025", 0, 0, 0, false);
+	ClasePersona personaInicial("nombre","apellido","000", "ciudad", "15/08/2025", 0, 0, 0, 0, false);
 
 	mayorEndeudado.emplace("Pais", personaInicial);
 
