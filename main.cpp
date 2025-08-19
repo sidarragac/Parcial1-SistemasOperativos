@@ -106,6 +106,8 @@ int main() {
                     std::cout << "\nNo hay datos disponibles. Use opción 0 primero.\n";
                     break;
                 }
+                
+                long memoriaValor;
 
                 std::vector<ClasePersona> personasClases = cargarColeccionClase();
                 tam = personasClases.size();
@@ -115,62 +117,50 @@ int main() {
                 // Busqueda de persona más longeva por valor y clase
                 std::cout << "\n--- Busqueda: Persona Longeva por Clase y Valor ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                buscarClasePersonaLongevaPorValor(*ptr_personasClases);
+                memoriaValor = buscarClasePersonaLongevaPorValor(*ptr_personasClases);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Persona Longeva por Clase y Valor", tiempo, memoria);
-                monitor.mostrar_estadistica("Persona Longeva por Clase y Valor", tiempo, memoria);
+                monitor.registrar("Persona Longeva por Clase y Valor", tiempo, memoriaValor);
+                monitor.mostrar_estadistica("Persona Longeva por Clase y Valor", tiempo, memoriaValor);
 
                 // Busqueda de persona con mayor patrimonio por valor y clase
                 std::cout << "\n--- Busqueda: Persona Mayor Patrimonio por Clase y Valor ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                buscarClasePersonaPatrimonioPorValor(*ptr_personasClases);
+                memoriaValor = buscarClasePersonaPatrimonioPorValor(*ptr_personasClases);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Persona Mayor Patrimonio por Clase y Valor", tiempo, memoria);
-                monitor.mostrar_estadistica("Persona Mayor Patrimonio por Clase y Valor", tiempo, memoria);
+                monitor.registrar("Persona Mayor Patrimonio por Clase y Valor", tiempo, memoriaValor);
+                monitor.mostrar_estadistica("Persona Mayor Patrimonio por Clase y Valor", tiempo, memoriaValor);
 
                 // Contar grupos por valor y clase
                 std::cout << "\n--- Busqueda: Contar grupos por Clase y Valor ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                contarClasePersonaGrupoPorValor(*ptr_personasClases);
+                memoriaValor = contarClasePersonaGrupoPorValor(*ptr_personasClases);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Contar grupos por Clase y Valor", tiempo, memoria);
-                monitor.mostrar_estadistica("Contar grupos por Clase y Valor", tiempo, memoria);
+                monitor.registrar("Contar grupos por Clase y Valor", tiempo, memoriaValor);
+                monitor.mostrar_estadistica("Contar grupos por Clase y Valor", tiempo, memoriaValor);
 
                 // Ciudad mayor número de personas
                 std::cout << "\n--- Busqueda: Ciudad más poblada Clase y Valor ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                buscarClasePersonaCiudadMasPobladaPorValor(*ptr_personasClases);
+                memoriaValor = buscarClasePersonaCiudadMasPobladaPorValor(*ptr_personasClases);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Ciudad más poblada Clase y Valor", tiempo, memoria);
-                monitor.mostrar_estadistica("Ciudad más poblada Clase y Valor", tiempo, memoria);
+                monitor.registrar("Ciudad más poblada Clase y Valor", tiempo, memoriaValor);
+                monitor.mostrar_estadistica("Ciudad más poblada Clase y Valor", tiempo, memoriaValor);
 
                 // Persona con más deuda
                 std::cout << "\n--- Busqueda: Persona más endeudada Clase y Valor ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                buscarClasePersonaEndeudadaPorValor(*ptr_personasClases);
+                memoriaValor = buscarClasePersonaEndeudadaPorValor(*ptr_personasClases);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Persona más endeudada Clase y Valor", tiempo, memoria);
-                monitor.mostrar_estadistica("Persona más endeudada Clase y Valor", tiempo, memoria);
-                
+                monitor.registrar("Persona más endeudada Clase y Valor", tiempo, memoriaValor);
+                monitor.mostrar_estadistica("Persona más endeudada Clase y Valor", tiempo, memoriaValor);
+
                 // Porcentaje de personas con ingresos mayores a 400M
                 std::cout << "\n--- Busqueda: Persona con ingresos mayores a 400M Clase y Valor ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                buscarClasePersonaPorcentajeIngresosAltosPorValor(*ptr_personasClases);
+                memoriaValor = buscarClasePersonaPorcentajeIngresosAltosPorValor(*ptr_personasClases);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Persona con ingresos mayores a 400M Clase y Valor", tiempo, memoria);
-                monitor.mostrar_estadistica("Persona con ingresos mayores a 400M Clase y Valor", tiempo, memoria);
+                monitor.registrar("Persona con ingresos mayores a 400M Clase y Valor", tiempo, memoriaValor);
+                monitor.mostrar_estadistica("Persona con ingresos mayores a 400M Clase y Valor", tiempo, memoriaValor);
                 break;
             }
 
@@ -180,6 +170,8 @@ int main() {
                     break;
                 }
 
+                long memoriaReferencia;
+
                 std::vector<ClasePersona> personasClases = cargarColeccionClase();
                 tam = personasClases.size();
 
@@ -188,62 +180,50 @@ int main() {
                 // Busqueda de persona más longeva por valor y referencia
                 std::cout << "\n--- Busqueda: Persona Longeva por Clase y Referencia ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                buscarClasePersonaLongevaPorReferencia(*ptr_personasClases);
+                memoriaReferencia = buscarClasePersonaLongevaPorReferencia(*ptr_personasClases);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Persona Longeva por Clase y Referencia", tiempo, memoria);
-                monitor.mostrar_estadistica("Persona Longeva por Clase y Referencia", tiempo, memoria);
+                monitor.registrar("Persona Longeva por Clase y Referencia", tiempo, memoriaReferencia);
+                monitor.mostrar_estadistica("Persona Longeva por Clase y Referencia", tiempo, memoriaReferencia);
 
                 // Busqueda de persona con mayor patrimonio por valor y referencia
                 std::cout << "\n--- Busqueda: Persona Mayor Patrimonio por Clase y Referencia ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                buscarClasePersonaPatrimonioPorReferencia(*ptr_personasClases);
+                memoriaReferencia = buscarClasePersonaPatrimonioPorReferencia(*ptr_personasClases);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Persona Mayor Patrimonio por Clase y Referencia", tiempo, memoria);
-                monitor.mostrar_estadistica("Persona Mayor Patrimonio por Clase y Referencia", tiempo, memoria);
+                monitor.registrar("Persona Mayor Patrimonio por Clase y Referencia", tiempo, memoriaReferencia);
+                monitor.mostrar_estadistica("Persona Mayor Patrimonio por Clase y Referencia", tiempo, memoriaReferencia);
 
                 // Contar grupos por valor y referencia
                 std::cout << "\n--- Busqueda: Contar grupos por Clase y Referencia ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                contarClasePersonaGrupoPorReferencia(*ptr_personasClases);
+                memoriaReferencia = contarClasePersonaGrupoPorReferencia(*ptr_personasClases);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Contar grupos por Clase y Referencia", tiempo, memoria);
-                monitor.mostrar_estadistica("Contar grupos por Clase y Referencia", tiempo, memoria);
+                monitor.registrar("Contar grupos por Clase y Referencia", tiempo, memoriaReferencia);
+                monitor.mostrar_estadistica("Contar grupos por Clase y Referencia", tiempo, memoriaReferencia);
 
                 // Ciudad mayor número de personas valor y referencia
                 std::cout << "\n--- Busqueda: Ciudad más poblada Clase y Referencia ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                buscarClasePersonaCiudadMasPobladaPorReferencia(*ptr_personasClases);
+                memoriaReferencia = buscarClasePersonaCiudadMasPobladaPorReferencia(*ptr_personasClases);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Ciudad más poblada Clase y Referencia", tiempo, memoria);
-                monitor.mostrar_estadistica("Ciudad más poblada Clase y Referencia", tiempo, memoria);
+                monitor.registrar("Ciudad más poblada Clase y Referencia", tiempo, memoriaReferencia);
+                monitor.mostrar_estadistica("Ciudad más poblada Clase y Referencia", tiempo, memoriaReferencia);
 
                 // Persona con más deuda
                 std::cout << "\n--- Busqueda: Persona más endeudada Clase y Referencia ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                buscarClasePersonaEndeudadaPorReferencia(*ptr_personasClases);
+                memoriaReferencia = buscarClasePersonaEndeudadaPorReferencia(*ptr_personasClases);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Persona más endeudada Clase y Referencia", tiempo, memoria);
-                monitor.mostrar_estadistica("Persona más endeudada Clase y Referencia", tiempo, memoria);
+                monitor.registrar("Persona más endeudada Clase y Referencia", tiempo, memoriaReferencia);
+                monitor.mostrar_estadistica("Persona más endeudada Clase y Referencia", tiempo, memoriaReferencia);
 
                 // Porcentaje de personas con ingresos mayores a 400M
                 std::cout << "\n--- Busqueda: Persona con ingresos mayores a 400M Clase y Referencia ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                buscarClasePersonaPorcentajeIngresosAltosPorReferencia(*ptr_personasClases);
+                memoriaReferencia = buscarClasePersonaPorcentajeIngresosAltosPorReferencia(*ptr_personasClases);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Persona con ingresos mayores a 400M Clase y Referencia", tiempo, memoria);
-                monitor.mostrar_estadistica("Persona con ingresos mayores a 400M Clase y Referencia", tiempo, memoria);
+                monitor.registrar("Persona con ingresos mayores a 400M Clase y Referencia", tiempo, memoriaReferencia);
+                monitor.mostrar_estadistica("Persona con ingresos mayores a 400M Clase y Referencia", tiempo, memoriaReferencia);
 
                 break;
             }
@@ -254,6 +234,8 @@ int main() {
                     break;
                 }
 
+                long memoriaValor;
+
                 std::vector<StructPersona> personasStructs = cargarColeccionStruct();
                 tam = personasStructs.size();
 
@@ -262,62 +244,50 @@ int main() {
                 // Búsqueda de persona más longeva por valor y struct
                 std::cout << "\n--- Busqueda: Persona Longeva por Struct y Valor ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                buscarStructPersonaLongevaPorValor(*ptr_personasStructs);
+                memoriaValor = buscarStructPersonaLongevaPorValor(*ptr_personasStructs);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Persona Longeva por Struct y Valor", tiempo, memoria);
-                monitor.mostrar_estadistica("Persona Longeva por Struct y Valor", tiempo, memoria);
+                monitor.registrar("Persona Longeva por Struct y Valor", tiempo, memoriaValor);
+                monitor.mostrar_estadistica("Persona Longeva por Struct y Valor", tiempo, memoriaValor);
 
                 // Búsqueda de persona con mayor patrimonio por valor y struct
                 std::cout << "\n--- Busqueda: Persona Mayor Patrimonio por Struct y Valor ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                buscarStructPersonaPatrimonioPorValor(*ptr_personasStructs);
+                memoriaValor = buscarStructPersonaPatrimonioPorValor(*ptr_personasStructs);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Persona Mayor Patrimonio por Struct y Valor", tiempo, memoria);
-                monitor.mostrar_estadistica("Persona Mayor Patrimonio por Struct y Valor", tiempo, memoria);
+                monitor.registrar("Persona Mayor Patrimonio por Struct y Valor", tiempo, memoriaValor);
+                monitor.mostrar_estadistica("Persona Mayor Patrimonio por Struct y Valor", tiempo, memoriaValor);
 
                 // Contar grupos por valor y struct
                 std::cout << "\n--- Busqueda: Contar grupos por Struct y Valor ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                contarStructPersonaGrupoPorValor(*ptr_personasStructs);
+                memoriaValor = contarStructPersonaGrupoPorValor(*ptr_personasStructs);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Contar grupos por Struct y Valor", tiempo, memoria);
-                monitor.mostrar_estadistica("Contar grupos por Struct y Valor", tiempo, memoria);
+                monitor.registrar("Contar grupos por Struct y Valor", tiempo, memoriaValor);
+                monitor.mostrar_estadistica("Contar grupos por Struct y Valor", tiempo, memoriaValor);
 
                 // Ciudad con mayor número de personas por struct
                 std::cout << "\n--- Busqueda: Ciudad más poblada Struct y Valor ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                buscarStructPersonaCiudadMasPobladaPorValor(*ptr_personasStructs);
+                memoriaValor = buscarStructPersonaCiudadMasPobladaPorValor(*ptr_personasStructs);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Ciudad más poblada Struct y Valor", tiempo, memoria);
-                monitor.mostrar_estadistica("Ciudad más poblada Struct y Valor", tiempo, memoria);
+                monitor.registrar("Ciudad más poblada Struct y Valor", tiempo, memoriaValor);
+                monitor.mostrar_estadistica("Ciudad más poblada Struct y Valor", tiempo, memoriaValor);
 
                 // Persona con más deuda por struct
                 std::cout << "\n--- Busqueda: Persona más endeudada Struct y Valor ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                buscarStructPersonaEndeudadaPorValor(*ptr_personasStructs);
+                memoriaValor = buscarStructPersonaEndeudadaPorValor(*ptr_personasStructs);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Persona más endeudada Struct y Valor", tiempo, memoria);
-                monitor.mostrar_estadistica("Persona más endeudada Struct y Valor", tiempo, memoria);
+                monitor.registrar("Persona más endeudada Struct y Valor", tiempo, memoriaValor);
+                monitor.mostrar_estadistica("Persona más endeudada Struct y Valor", tiempo, memoriaValor);
 
                 // Porcentaje de personas con ingresos mayores a 400M por struct
                 std::cout << "\n--- Busqueda: Persona con ingresos mayores a 400M Struct y Valor ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                buscarStructPersonaPorcentajeIngresosAltosPorValor(*ptr_personasStructs);
+                memoriaValor = buscarStructPersonaPorcentajeIngresosAltosPorValor(*ptr_personasStructs);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Persona con ingresos mayores a 400M Struct y Valor", tiempo, memoria);
-                monitor.mostrar_estadistica("Persona con ingresos mayores a 400M Struct y Valor", tiempo, memoria);
+                monitor.registrar("Persona con ingresos mayores a 400M Struct y Valor", tiempo, memoriaValor);
+                monitor.mostrar_estadistica("Persona con ingresos mayores a 400M Struct y Valor", tiempo, memoriaValor);
 
                 break;
             }
@@ -328,6 +298,8 @@ int main() {
                     break;
                 }
 
+                long memoriaReferencia;
+
                 std::vector<StructPersona> personasStructs = cargarColeccionStruct();
                 tam = personasStructs.size();
 
@@ -336,62 +308,50 @@ int main() {
                 // Búsqueda de persona más longeva por referencia y struct
                 std::cout << "\n--- Busqueda: Persona Longeva por Struct y Referencia ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                buscarStructPersonaLongevaPorReferencia(*ptr_personasStructs);
+                memoriaReferencia = buscarStructPersonaLongevaPorReferencia(*ptr_personasStructs);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Persona Longeva por Struct y Referencia", tiempo, memoria);
-                monitor.mostrar_estadistica("Persona Longeva por Struct y Referencia", tiempo, memoria);
+                monitor.registrar("Persona Longeva por Struct y Referencia", tiempo, memoriaReferencia);
+                monitor.mostrar_estadistica("Persona Longeva por Struct y Referencia", tiempo, memoriaReferencia);
 
                 // Búsqueda de persona con mayor patrimonio por referencia y struct
                 std::cout << "\n--- Busqueda: Persona Mayor Patrimonio por Struct y Referencia ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                buscarStructPersonaPatrimonioPorReferencia(*ptr_personasStructs);
+                memoriaReferencia = buscarStructPersonaPatrimonioPorReferencia(*ptr_personasStructs);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Persona Mayor Patrimonio por Struct y Referencia", tiempo, memoria);
-                monitor.mostrar_estadistica("Persona Mayor Patrimonio por Struct y Referencia", tiempo, memoria);
+                monitor.registrar("Persona Mayor Patrimonio por Struct y Referencia", tiempo, memoriaReferencia);
+                monitor.mostrar_estadistica("Persona Mayor Patrimonio por Struct y Referencia", tiempo, memoriaReferencia);
 
                 // Contar grupos por referencia y struct
                 std::cout << "\n--- Busqueda: Contar grupos por Struct y Referencia ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                contarStructPersonaGrupoPorReferencia(*ptr_personasStructs);
+                memoriaReferencia = contarStructPersonaGrupoPorReferencia(*ptr_personasStructs);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Contar grupos por Struct y Referencia", tiempo, memoria);
-                monitor.mostrar_estadistica("Contar grupos por Struct y Referencia", tiempo, memoria);
+                monitor.registrar("Contar grupos por Struct y Referencia", tiempo, memoriaReferencia);
+                monitor.mostrar_estadistica("Contar grupos por Struct y Referencia", tiempo, memoriaReferencia);
 
                 // Ciudad con mayor número de personas por referencia y struct
                 std::cout << "\n--- Busqueda: Ciudad más poblada Struct y Referencia ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                buscarStructPersonaCiudadMasPobladaPorReferencia(*ptr_personasStructs);
+                memoriaReferencia = buscarStructPersonaCiudadMasPobladaPorReferencia(*ptr_personasStructs);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Ciudad más poblada Struct y Referencia", tiempo, memoria);
-                monitor.mostrar_estadistica("Ciudad más poblada Struct y Referencia", tiempo, memoria);
+                monitor.registrar("Ciudad más poblada Struct y Referencia", tiempo, memoriaReferencia);
+                monitor.mostrar_estadistica("Ciudad más poblada Struct y Referencia", tiempo, memoriaReferencia);
 
                 // Persona con más deuda por referencia y struct
                 std::cout << "\n--- Busqueda: Persona más endeudada Struct y Referencia ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                buscarStructPersonaEndeudadaPorReferencia(*ptr_personasStructs);
+                memoriaReferencia = buscarStructPersonaEndeudadaPorReferencia(*ptr_personasStructs);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Persona más endeudada Struct y Referencia", tiempo, memoria);
-                monitor.mostrar_estadistica("Persona más endeudada Struct y Referencia", tiempo, memoria);
+                monitor.registrar("Persona más endeudada Struct y Referencia", tiempo, memoriaReferencia);
+                monitor.mostrar_estadistica("Persona más endeudada Struct y Referencia", tiempo, memoriaReferencia);
 
                 // Porcentaje de personas con ingresos mayores a 400M por referencia y struct
                 std::cout << "\n--- Busqueda: Persona con ingresos mayores a 400M Struct y Referencia ---\n";
                 monitor.iniciar_tiempo();
-                memoriaInicial = monitor.obtener_memoria();
-                buscarStructPersonaPorcentajeIngresosAltosPorReferencia(*ptr_personasStructs);
+                memoriaReferencia = buscarStructPersonaPorcentajeIngresosAltosPorReferencia(*ptr_personasStructs);
                 tiempo = monitor.detener_tiempo();
-                memoria = monitor.obtener_memoria() - memoriaInicial;
-                monitor.registrar("Persona con ingresos mayores a 400M Struct y Referencia", tiempo, memoria);
-                monitor.mostrar_estadistica("Persona con ingresos mayores a 400M Struct y Referencia", tiempo, memoria);
+                monitor.registrar("Persona con ingresos mayores a 400M Struct y Referencia", tiempo, memoriaReferencia);
+                monitor.mostrar_estadistica("Persona con ingresos mayores a 400M Struct y Referencia", tiempo, memoriaReferencia);
 
                 break;
             }

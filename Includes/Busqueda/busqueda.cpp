@@ -10,7 +10,6 @@
 
 long buscarClasePersonaLongevaPorValor(std::vector<ClasePersona> personas) {
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	// Se crea un map para guardar la persona mayor en todo el pais y por ciudad
 	std::unordered_map<std::string, ClasePersona> mayores;
 
@@ -49,13 +48,12 @@ long buscarClasePersonaLongevaPorValor(std::vector<ClasePersona> personas) {
         par.second.mostrar();
     }
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long buscarClasePersonaLongevaPorReferencia(const std::vector<ClasePersona>& personas) {
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	// Se crea un map para guardar la persona mayor en todo el pais y por ciudad
 	std::unordered_map<std::string, const ClasePersona*> mayores;
 
@@ -95,13 +93,12 @@ long buscarClasePersonaLongevaPorReferencia(const std::vector<ClasePersona>& per
 		par.second->mostrar();
 	}
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long buscarStructPersonaLongevaPorValor(std::vector<StructPersona> personas) {
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	// Se crea un map para guardar la persona mayor en todo el pais y por ciudad
 	std::unordered_map<std::string, StructPersona> mayores;
 
@@ -141,13 +138,12 @@ long buscarStructPersonaLongevaPorValor(std::vector<StructPersona> personas) {
         par.second.mostrar();
     }
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long buscarStructPersonaLongevaPorReferencia(const std::vector<StructPersona>& personas) {
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	// Se crea un map para guardar la persona mayor en todo el pais y por ciudad
 	std::unordered_map<std::string, const StructPersona*> mayores;
 
@@ -187,13 +183,12 @@ long buscarStructPersonaLongevaPorReferencia(const std::vector<StructPersona>& p
 		par.second->mostrar();
 	}
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long buscarClasePersonaPatrimonioPorValor(std::vector<ClasePersona> personas) {
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	// Se crea un map para guardar la persona mayor en todo el pais y por ciudad
 	std::unordered_map<std::string, ClasePersona> masRicos;
 
@@ -251,13 +246,12 @@ long buscarClasePersonaPatrimonioPorValor(std::vector<ClasePersona> personas) {
         par.second.mostrar();
     }
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long buscarClasePersonaPatrimonioPorReferencia(const std::vector<ClasePersona>& personas) {
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	// Se crea un map para guardar la persona mayor en todo el pais y por ciudad
 	std::unordered_map<std::string, const ClasePersona*> masRicos;
 
@@ -314,13 +308,12 @@ long buscarClasePersonaPatrimonioPorReferencia(const std::vector<ClasePersona>& 
 		par.second->mostrar();
 	}
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long buscarStructPersonaPatrimonioPorValor(std::vector<StructPersona> personas) {
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	// Se crea un map para guardar la persona mayor en todo el pais y por ciudad
 	std::unordered_map<std::string, StructPersona> masRicos;
 
@@ -379,13 +372,12 @@ long buscarStructPersonaPatrimonioPorValor(std::vector<StructPersona> personas) 
         par.second.mostrar();
     }
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long buscarStructPersonaPatrimonioPorReferencia(const std::vector<StructPersona>& personas) {
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	// Se crea un map para guardar la persona mayor en todo el pais y por ciudad
 	std::unordered_map<std::string, const StructPersona*> masRicos;
 
@@ -442,13 +434,12 @@ long buscarStructPersonaPatrimonioPorReferencia(const std::vector<StructPersona>
 		par.second->mostrar();
 	}
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long contarClasePersonaGrupoPorValor(std::vector<ClasePersona> personas){
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	std::unordered_map<std::string, int> conteoPorGrupo;
 	
 	// Por grupo de declaracion
@@ -470,13 +461,12 @@ long contarClasePersonaGrupoPorValor(std::vector<ClasePersona> personas){
         std::cout << par.first << " -> " << par.second << "\n";
     }
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long contarClasePersonaGrupoPorReferencia(const std::vector<ClasePersona>& personas){
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	std::unordered_map<std::string, int> conteoPorGrupo;
 	
 	// Por grupo de declaracion
@@ -498,13 +488,12 @@ long contarClasePersonaGrupoPorReferencia(const std::vector<ClasePersona>& perso
         std::cout << par.first << " -> " << par.second << "\n";
     }
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long contarStructPersonaGrupoPorValor(std::vector<StructPersona> personas){
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	std::unordered_map<std::string, int> conteoPorGrupo;
 	
 	// Por grupo de declaracion
@@ -526,13 +515,12 @@ long contarStructPersonaGrupoPorValor(std::vector<StructPersona> personas){
         std::cout << par.first << " -> " << par.second << "\n";
     }
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long contarStructPersonaGrupoPorReferencia(const std::vector<StructPersona>& personas){
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	std::unordered_map<std::string, int> conteoPorGrupo;
 	
 	// Por grupo de declaracion
@@ -554,7 +542,7 @@ long contarStructPersonaGrupoPorReferencia(const std::vector<StructPersona>& per
         std::cout << par.first << " -> " << par.second << "\n";
     }
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
@@ -567,7 +555,6 @@ BUSQUEDAS ADICIONALES:
 
 long buscarClasePersonaCiudadMasPobladaPorValor(std::vector<ClasePersona> personas){
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	std::unordered_map<std::string, int> conteoPorCiudad;
 
 	for (std::string ciudad : ciudadesColombia){
@@ -597,13 +584,12 @@ long buscarClasePersonaCiudadMasPobladaPorValor(std::vector<ClasePersona> person
 	// Imprimir la ciudad mas poblada
     std::cout << "La ciudad más poblada es " << ciudadMasPoblada << " con una población de " << max << "\n";
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long buscarClasePersonaCiudadMasPobladaPorReferencia(const std::vector<ClasePersona>& personas){
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	std::unordered_map<std::string, int> conteoPorCiudad;
 
 	for (std::string ciudad : ciudadesColombia){
@@ -633,13 +619,12 @@ long buscarClasePersonaCiudadMasPobladaPorReferencia(const std::vector<ClasePers
 	// Imprimir la ciudad mas poblada
     std::cout << "La ciudad más poblada es " << ciudadMasPoblada << " con una población de " << max << "\n";
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long buscarStructPersonaCiudadMasPobladaPorValor(std::vector<StructPersona> personas){
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	std::unordered_map<std::string, int> conteoPorCiudad;
 
 	for (std::string ciudad : ciudadesColombia){
@@ -669,13 +654,12 @@ long buscarStructPersonaCiudadMasPobladaPorValor(std::vector<StructPersona> pers
 	// Imprimir la ciudad mas poblada
     std::cout << "La ciudad más poblada es " << ciudadMasPoblada << " con una población de " << max << "\n";
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long buscarStructPersonaCiudadMasPobladaPorReferencia(const std::vector<StructPersona>& personas){
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	std::unordered_map<std::string, int> conteoPorCiudad;
 
 	for (std::string ciudad : ciudadesColombia){
@@ -705,13 +689,12 @@ long buscarStructPersonaCiudadMasPobladaPorReferencia(const std::vector<StructPe
 	// Imprimir la ciudad mas poblada
     std::cout << "La ciudad más poblada es " << ciudadMasPoblada << " con una población de " << max << "\n";
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long buscarClasePersonaEndeudadaPorValor(std::vector<ClasePersona> personas) {
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	// Se crea un map para guardar la persona mayor en todo el pais y por ciudad
 	std::unordered_map<std::string, ClasePersona> mayorEndeudado;
 
@@ -732,13 +715,12 @@ long buscarClasePersonaEndeudadaPorValor(std::vector<ClasePersona> personas) {
 
     mayorEndeudado.find("Pais")->second.mostrar();
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long buscarClasePersonaEndeudadaPorReferencia(const std::vector<ClasePersona>& personas) {
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	// Se crea un map para guardar la persona mayor en todo el pais y por ciudad
 	std::unordered_map<std::string, const ClasePersona*> mayorEndeudado;
 
@@ -762,13 +744,12 @@ long buscarClasePersonaEndeudadaPorReferencia(const std::vector<ClasePersona>& p
 
 	mayorEndeudado.find("Pais")->second->mostrar();
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long buscarStructPersonaEndeudadaPorValor(std::vector<StructPersona> personas) {
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	// Se crea un map para guardar la persona mayor en todo el pais y por ciudad
 	std::unordered_map<std::string, StructPersona> mayorEndeudado;
 
@@ -790,13 +771,12 @@ long buscarStructPersonaEndeudadaPorValor(std::vector<StructPersona> personas) {
 
     mayorEndeudado.find("Pais")->second.mostrar();
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long buscarStructPersonaEndeudadaPorReferencia(const std::vector<StructPersona>& personas) {
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	// Se crea un map para guardar la persona mayor en todo el pais y por ciudad
 	std::unordered_map<std::string, const StructPersona*> mayorEndeudado;
 
@@ -820,13 +800,12 @@ long buscarStructPersonaEndeudadaPorReferencia(const std::vector<StructPersona>&
 
 	mayorEndeudado.find("Pais")->second->mostrar();
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long buscarClasePersonaPorcentajeIngresosAltosPorValor(std::vector<ClasePersona> personas) {
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	float poblacion = 0;
 	float numeroPersonasIngresosAltos = 0;
 
@@ -841,7 +820,7 @@ long buscarClasePersonaPorcentajeIngresosAltosPorValor(std::vector<ClasePersona>
 
 	std::cout << "El porcentaje de personas con ingresos anuales mayores a 400M es " << porcentaje << "%\n";
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
@@ -862,13 +841,12 @@ long buscarClasePersonaPorcentajeIngresosAltosPorReferencia(const std::vector<Cl
 
 	std::cout << "El porcentaje de personas con ingresos anuales mayores a 400M es " << porcentaje << "%\n";
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long buscarStructPersonaPorcentajeIngresosAltosPorValor(std::vector<StructPersona> personas) {
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	float poblacion = 0;
 	float numeroPersonasIngresosAltos = 0;
 
@@ -883,13 +861,12 @@ long buscarStructPersonaPorcentajeIngresosAltosPorValor(std::vector<StructPerson
 
 	std::cout << "El porcentaje de personas con ingresos anuales mayores a 400M es " << porcentaje << "%\n";
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
 
 long buscarStructPersonaPorcentajeIngresosAltosPorReferencia(const std::vector<StructPersona>& personas) {
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	float poblacion = 0;
 	float numeroPersonasIngresosAltos = 0;
 
@@ -904,6 +881,6 @@ long buscarStructPersonaPorcentajeIngresosAltosPorReferencia(const std::vector<S
 
 	std::cout << "El porcentaje de personas con ingresos anuales mayores a 400M es " << porcentaje << "%\n";
 
-	long memoria = monitor.obtener_memoria() - memoria_i;
+	long memoria = monitor.obtener_memoria();
 	return memoria;
 }
