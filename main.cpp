@@ -50,8 +50,6 @@ int main() {
 
     int opcion;
     double tiempo;
-    long memoriaInicial;
-    long memoria;
     bool generated = false;
     do {
         mostrarMenu();
@@ -59,7 +57,6 @@ int main() {
 
         // Variables locales para uso en los casos
         size_t tam = 0;
-        int indice;
         std::string idBusqueda;
 
         // Iniciar medición de tiempo y memoria para la operación actual

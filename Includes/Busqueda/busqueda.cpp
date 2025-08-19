@@ -826,7 +826,6 @@ long buscarClasePersonaPorcentajeIngresosAltosPorValor(std::vector<ClasePersona>
 
 long buscarClasePersonaPorcentajeIngresosAltosPorReferencia(const std::vector<ClasePersona>& personas) {
 	Monitor monitor;
-	long memoria_i = monitor.obtener_memoria();
 	float poblacion = 0;
 	float numeroPersonasIngresosAltos = 0;
 
