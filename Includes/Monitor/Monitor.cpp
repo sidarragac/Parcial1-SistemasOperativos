@@ -1,6 +1,7 @@
 #include "Monitor.h"
 #include <unistd.h> // sysconf
 #include <cstdio>   // FILE, fscanf
+#include <sstream>
 
 /**
  * Inicia el cronómetro.
@@ -36,24 +37,27 @@ double Monitor::detener_tiempo() {
  * @return Memoria residente en KB, o 0 en caso de error.
  */
 long Monitor::obtener_memoria() {
-    FILE* file = fopen("/proc/self/statm", "r");
-    if (!file) {
-        perror("Error al abrir /proc/self/statm");
+    std::ifstream smaps("/proc/self/smaps");
+    if (!smaps) {
+        std::cerr << "No se pudo abrir /proc/self/smaps" << std::endl;
         return 0;
     }
-    
-    long size, resident, shared, text, lib, data, dt;
-    if (fscanf(file, "%ld %ld %ld %ld %ld %ld %ld", 
-              &size, &resident, &shared, &text, &lib, &data, &dt) != 7) {
-        fclose(file);
-        return 0;
+
+    std::string linea;
+    long total_pss_kb = 0;
+
+    while (std::getline(smaps, linea)) {
+        if (linea.find("Pss:") == 0) {
+            std::istringstream iss(linea);
+            std::string key;
+            long valor;
+            std::string unidad;
+            iss >> key >> valor >> unidad;
+            total_pss_kb += valor;
+        }
     }
-    
-    fclose(file);
-    
-    // Calcular memoria en KB: resident (páginas) * tamaño_página (KB)
-    long page_size_kb = sysconf(_SC_PAGESIZE) / 1024;
-    return resident * page_size_kb;
+
+    return total_pss_kb;
 }
 
 /**
