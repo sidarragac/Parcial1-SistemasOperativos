@@ -6,54 +6,52 @@
 #include <unordered_map>
 #include "../ClasePersona/ClasePersona.h"
 
-int calcularEdad(const std::string& fechaNacimiento);
+long buscarClasePersonaLongevaPorValor(std::vector<ClasePersona> personas);
 
-std::unordered_map<std::string, ClasePersona> buscarClasePersonaLongevaPorValor(std::vector<ClasePersona> personas);
+long buscarClasePersonaLongevaPorReferencia(const std::vector<ClasePersona>& personas);
 
-std::unordered_map<std::string, const ClasePersona*> buscarClasePersonaLongevaPorReferencia(const std::vector<ClasePersona>& personas);
+long buscarStructPersonaLongevaPorValor(std::vector<StructPersona> personas);
 
-std::unordered_map<std::string, StructPersona> buscarStructPersonaLongevaPorValor(std::vector<StructPersona> personas);
+long buscarStructPersonaLongevaPorReferencia(const std::vector<StructPersona>& personas);
 
-std::unordered_map<std::string, const StructPersona*> buscarStructPersonaLongevaPorReferencia(const std::vector<StructPersona>& personas);
+long buscarClasePersonaPatrimonioPorValor(std::vector<ClasePersona> personas);
 
-std::unordered_map<std::string, ClasePersona> buscarClasePersonaPatrimonioPorValor(std::vector<ClasePersona> personas);
+long buscarClasePersonaPatrimonioPorReferencia(const std::vector<ClasePersona>& personas);
 
-std::unordered_map<std::string, const ClasePersona*> buscarClasePersonaPatrimonioPorReferencia(const std::vector<ClasePersona>& personas);
+long buscarStructPersonaPatrimonioPorValor(std::vector<StructPersona> personas);
 
-std::unordered_map<std::string, StructPersona> buscarStructPersonaPatrimonioPorValor(std::vector<StructPersona> personas);
+long buscarStructPersonaPatrimonioPorReferencia(const std::vector<StructPersona>& personas);
 
-std::unordered_map<std::string, const StructPersona*> buscarStructPersonaPatrimonioPorReferencia(const std::vector<StructPersona>& personas);
+long contarClasePersonaGrupoPorValor(std::vector<ClasePersona> personas);
 
-std::unordered_map<std::string, int> contarClasePersonaGrupoPorValor(std::vector<ClasePersona> personas);
+long contarClasePersonaGrupoPorReferencia(const std::vector<ClasePersona>& personas);
 
-std::unordered_map<std::string, int> contarClasePersonaGrupoPorReferencia(const std::vector<ClasePersona>& personas);
+long contarStructPersonaGrupoPorValor(std::vector<StructPersona> personas);
 
-std::unordered_map<std::string, int> contarStructPersonaGrupoPorValor(std::vector<StructPersona> personas);
+long contarStructPersonaGrupoPorReferencia(const std::vector<StructPersona>& personas);
 
-std::unordered_map<std::string, int> contarStructPersonaGrupoPorReferencia(const std::vector<StructPersona>& personas);
+long buscarClasePersonaCiudadMasPobladaPorValor(std::vector<ClasePersona> personas);
 
-std::string buscarClasePersonaCiudadMasPobladaPorValor(std::vector<ClasePersona> personas);
+long buscarClasePersonaCiudadMasPobladaPorReferencia(const std::vector<ClasePersona>& personas);
 
-std::string buscarClasePersonaCiudadMasPobladaPorReferencia(const std::vector<ClasePersona>& personas);
+long buscarStructPersonaCiudadMasPobladaPorValor(std::vector<StructPersona> personas);
 
-std::string buscarStructPersonaCiudadMasPobladaPorValor(std::vector<StructPersona> personas);
+long buscarStructPersonaCiudadMasPobladaPorReferencia(const std::vector<StructPersona>& personas);
 
-std::string buscarStructPersonaCiudadMasPobladaPorReferencia(const std::vector<StructPersona>& personas);
+long buscarClasePersonaEndeudadaPorValor(std::vector<ClasePersona> personas);
 
-std::unordered_map<std::string, ClasePersona> buscarClasePersonaEndeudadaPorValor(std::vector<ClasePersona> personas);
+long buscarClasePersonaEndeudadaPorReferencia(const std::vector<ClasePersona>& personas);
 
-std::unordered_map<std::string, const ClasePersona*> buscarClasePersonaEndeudadaPorReferencia(const std::vector<ClasePersona>& personas);
+long buscarStructPersonaEndeudadaPorValor(std::vector<StructPersona> personas);
 
-std::unordered_map<std::string, StructPersona> buscarStructPersonaEndeudadaPorValor(std::vector<StructPersona> personas);
+long buscarStructPersonaEndeudadaPorReferencia(const std::vector<StructPersona>& personas);
 
-std::unordered_map<std::string, const StructPersona*> buscarStructPersonaEndeudadaPorReferencia(const std::vector<StructPersona>& personas);
+long buscarClasePersonaPorcentajeIngresosAltosPorValor(std::vector<ClasePersona> personas);
 
-float buscarClasePersonaPorcentajeIngresosAltosPorValor(std::vector<ClasePersona> personas);
+long buscarClasePersonaPorcentajeIngresosAltosPorReferencia(const std::vector<ClasePersona>& personas);
 
-float buscarClasePersonaPorcentajeIngresosAltosPorReferencia(const std::vector<ClasePersona>& personas);
+long buscarStructPersonaPorcentajeIngresosAltosPorValor(std::vector<StructPersona> personas);
 
-float buscarStructPersonaPorcentajeIngresosAltosPorValor(std::vector<StructPersona> personas);
-
-float buscarStructPersonaPorcentajeIngresosAltosPorReferencia(const std::vector<StructPersona>& personas);
+long buscarStructPersonaPorcentajeIngresosAltosPorReferencia(const std::vector<StructPersona>& personas);
 
 #endif

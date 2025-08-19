@@ -16,6 +16,8 @@ std::string generarID();
 
 double randomDouble(double min, double max);
 
+double calcularEdad(const std::string& fechaNacimiento);
+
 // Funciones para generar colecciones de datos
 std::string generarDatos();
 void generarColeccion(int n);
